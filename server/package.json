@@ -1,0 +1,11 @@
+{
+  "name": "android-remote-trigger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andrin Bertschi <andrin.bertschi@gmail.com> (http://www.abertschi.ch)",
+  "license": "ISC"
+}
