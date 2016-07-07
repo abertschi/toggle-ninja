@@ -41,3 +41,4 @@ captures/
 server/node_modules
 server0.js
 db.json
+scripts/config.conf
