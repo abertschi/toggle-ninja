@@ -11,6 +11,20 @@ const API_KEY = 'AIzaSyC3qeVslFcd5xpvij_sBjWKBa6J9BpFtUg';
 const GCS_URL = 'https://gcm-http.googleapis.com/gcm/send';
 const CLIENT_TOKEN = '5A1xWB6W-uwJw42iiHDODfdfb4Ere01Tm3auJkXXDaLfbCsCfgnWaKiJErFExOOU8Jh0x33cpPe';
 
+if (process.env.NODE_ENV == 'PRODUCTION') {
+  console.log('running in PRODUCTION env');
+  var fs = require('fs');
+  var util = require('util');
+  var log_file = fs.createWriteStream(__dirname + '/debug.log', {flags : 'a'});
+  var log_stdout = process.stdout;
+
+  console.log = function(d) { //
+    log_file.write(util.format(d) + '\n');
+    log_stdout.write(util.format(d) + '\n');
+  };
+}
+
+
 db.defaults({
   clients: []
 }).value()
