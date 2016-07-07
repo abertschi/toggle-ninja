@@ -39,3 +39,5 @@ captures/
 # Keystore files
 *.jks
 server/node_modules
+server0.js
+db.json
