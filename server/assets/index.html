@@ -1,0 +1,318 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="material.css">
+  <script defer src="material.min.js"></script>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <title>Android Remote Trigger</title>
+  <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+
+  <style>
+    .mdl-button.mdl-button--colored {
+      color: #EF767A;
+    }
+
+    body {
+      background-color: #456990;
+      width: 100%;
+      height: 100%;
+    }
+
+    .login {
+      display: flex;
+      /* or inline-flex */
+      padding-top: 200px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .login-dialog> .mdl-card__title {
+      color: #fff;
+      font-weight: bold;
+      padding-top: : 10px;
+      height: 120px;
+      background-color: #EF767A;
+    }
+
+    .login-dialog {
+      width: 290px;
+    }
+
+    .login-dialog__content {
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .trigger {
+      display: flex;
+      /* or inline-flex */
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding-top: 200px;
+    }
+
+    .trigger__card {
+      margin: 20px;
+    }
+
+    .trigger__logout-button {
+      position: absolute;
+      right: 30px;
+      top: 30px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .trigger__card--hotspot {
+      background: url('modem.svg') no-repeat white;
+      background-size: 100px;
+      background-position: 95% 17%;
+    }
+
+    .trigger__card--wifi {
+      background: url('antenna.svg') no-repeat white;
+      background-size: 100px;
+      background-position: 95% 17%;
+    }
+
+    .trigger__card--bluetooth {
+      background: url('antenna-blue.svg') no-repeat white;
+      background-size: 100px;
+      background-position: 95% 17%;
+    }
+
+    .footer-heart {
+      width: 50px;
+    }
+    footer {
+      color: white;
+      position: absolute;
+      bottom: 30px;
+      text-align: center;
+      right: auto;
+      left: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <section class='login hidden' id='login'>
+    <form action="#" id='login-form'>
+      <div class="login-dialog mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+          <h2 class="mdl-card__title-text">remote-trigger</h2>
+        </div>
+        <div class='login-dialog__content'>
+
+          <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="text" id="password" autofocus="true">
+            <label class="mdl-textfield__label" for="sample1">Password</label>
+          </div>
+
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='do-login'>
+        Let me in!
+      </a>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <section class='trigger hidden' id='trigger'>
+
+    <div class="trigger__card trigger__card--wifi mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">WIFI</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Enable WIFI on your device
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='wifi-on'>
+          ON
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='wifi-off'>
+          OFF
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='wifi-switch'>
+          TOGGLE
+        </a>
+      </div>
+    </div>
+
+    <div class="trigger__card trigger__card--hotspot mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">HOTSPOT</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Enable the hotspot feature on your device
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='hotspot-on'>
+          ON
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='hotspot-off'>
+          OFF
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='hotspot-switch'>
+          TRIGGER
+        </a>
+      </div>
+    </div>
+
+    <div class="trigger__card trigger__card--bluetooth mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">BLUETOOTH</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Enable Bluetooth on your device
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='bluetooth-on'>
+          ON
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='bluetooth-off'>
+          OFF
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id='bluetooth-switch'>
+          TRIGGER
+        </a>
+      </div>
+    </div>
+
+
+
+    <button class="trigger__logout-button mdl-button mdl-js-button mdl-button--raised" id='logout'>
+      LOGOUT
+    </button>
+
+
+
+  </section>
+
+  <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.1.5/scrollreveal.min.js"></script>
+  <script>
+    (function() {
+      'use strict';
+
+      window.sr = new ScrollReveal({
+        reset: false,
+        move: '100px',
+        mobile: false
+      });
+
+      if (localStorage.getItem("password") != null) {
+        showTriggers();
+      } else {
+        showLogin();
+      }
+
+      $('#login-form').keypress(function(e) {
+        var key = e.which;
+        if (key == 13) // the enter key code
+        {
+          $("#do-login").click();
+          return false;
+        }
+      });
+
+      $("#do-login").click(function(event) {
+        var password = $("#password").val();
+        console.log(password);
+        if (!password || password == '') {
+          showToast('Invalid password!');
+        } else {
+          localStorage.setItem("password", password);
+          showTriggers();
+        }
+      });
+
+      $("#logout").click(function(event) {
+        localStorage.removeItem("password");
+        showLogin();
+      });
+
+      $("#wifi-on").click(function(event) {
+        callPhone('wifi', 'on');
+      });
+      $("#wifi-off").click(function(event) {
+        callPhone('wifi', 'off');
+      });
+      $("#wifi-switch").click(function(event) {
+        callPhone('wifi', 'switch');
+      });
+      $("#bluetooth-on").click(function(event) {
+        callPhone('bluetooth', 'on');
+      });
+      $("#bluetooth-off").click(function(event) {
+        callPhone('bluetooth', 'off');
+      });
+      $("#bluetooth-switch").click(function(event) {
+        callPhone('bluetooth', 'switch');
+      });
+      $("#hotspot-switch").click(function(event) {
+        callPhone('hotspot', 'switch');
+      });
+      $("#hotspot-on").click(function(event) {
+        callPhone('hotspot', 'on');
+      });
+      $("#hotspot-off").click(function(event) {
+        callPhone('hotspot', 'off');
+      });
+
+      function showTriggers() {
+        $('#trigger').removeClass('hidden');
+        $('#login').addClass('hidden');
+        sr.reveal('.trigger__card', { duration: 200 });
+      }
+
+      function showLogin() {
+        $('#trigger').addClass('hidden');
+        $('#login').removeClass('hidden');
+        sr.reveal('.login-dialog', { duration: 200 });
+      }
+
+      function callPhone(command, arg) {
+        $.ajax({
+          url: "http://213.136.81.179:3000/api/trigger/" + command + '/' + arg,
+          data: {
+            token: localStorage.getItem('password')
+          },
+          type: 'post',
+          complete: function(xhr, statusText) {
+            if (xhr.status == 200) {
+              showToast(command + ' shouted!');
+            } else {
+              showToast('Ouch! ' + 'Calling \'' + command + '\' failed with ' + statusText + ' (' + xhr.status + ')');
+            }
+          }
+        });
+      }
+
+      function showToast(msg) {
+        var container = document.querySelector('#demo-toast-example');
+        var data = {
+          message: msg
+        };
+        container.MaterialSnackbar.showSnackbar(data);
+      }
+    })();
+  </script>
+
+
+
+</body>
+
+</html>

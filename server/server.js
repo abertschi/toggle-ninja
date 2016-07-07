@@ -35,6 +35,8 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(express.static('assets'));
+
 let tokenAuth = (req, res, next) => {
   let client = db.get('clients')
     .find({
@@ -70,9 +72,7 @@ let prepareRequest = () => {
     });
 }
 
-app.get('/', function(req, res) {
-  res.send('Android Remote Trigger');
-});
+app.use('/', express.static('assets'));
 
 app.post('/api/client', clientTokenAuth, (req, res, next) => {
   let client;
