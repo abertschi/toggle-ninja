@@ -38,6 +38,7 @@ let tokenAuth = (req, res, next) => {
 }
 
 let clientTokenAuth = (req, res, next) => {
+  console.log('client auth with token ' + req.body.clientSecret);
   if (CLIENT_TOKEN != req.body.clientSecret) {
     res.status(401).send({
       error: 'Unauthorized'
