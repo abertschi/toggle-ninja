@@ -100,19 +100,25 @@ app.post('/api/client', clientTokenAuth, (req, res, next) => {
 });
 
 app.post('/api/trigger/:command/:arg?', tokenAuth, (req, res, next) => {
-  if (!req.params.command) {
-    res.status(500).send();
-  }
   let command = req.params.command;
   let clientId = req.body.token;
   let arg = req.params.arg || '';
   let payload = req.query || '';
 
+  let client = db.get('clients')
+    .find({
+      id: clientId
+    }).value();
+
+    if (!req.params.command || !client) {
+      res.status(500).send();
+    }
+
   console.log(`Triggering ${command} with ${arg} ${payload} for client ${clientId}`);
 
   prepareRequest()
     .send({
-      to: clientId,
+      to: client.token,
       data: {
         command: command,
         arg: arg,
