@@ -117,7 +117,7 @@ app.post('/api/trigger/:command/:arg?', tokenAuth, (req, res, next) => {
   let command = req.params.command;
   let clientId = req.body.token;
   let arg = req.params.arg || '';
-  let payload = req.query || '';
+  let payload = req.body.payload || '';
 
   let client = db.get('clients')
     .find({
