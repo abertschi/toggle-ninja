@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ch.abertschi.toggleninja.SquareFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/toggle_container"
+    android:background="@drawable/toggle_border">
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/toggle_image"
+        android:src="@mipmap/toggle_ninja"
+        android:padding="40dp"
+        android:layout_above="@+id/toggle_name" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_size_small"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal|bottom"
+
+        android:padding="12dip"
+
+        android:layout_below="@+id/toggle_image"
+        android:textColor="#494949"
+        android:text="Wifi"
+        android:id="@+id/toggle_name"
+        android:layout_centerHorizontal="true" />
+
+
+</ch.abertschi.toggleninja.SquareFrameLayout>

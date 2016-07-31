@@ -43,3 +43,6 @@ server0.js
 db.json
 scripts/config.conf
 android-config.conf
+android/.idea
+toggle-ninja-web.psd
+ninja.psd
