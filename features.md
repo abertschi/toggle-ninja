@@ -1,4 +1,8 @@
- # Toggle Ninja for Android
+# Toggle Ninja for Android
+
+> Be a Ninja and toggle features on your phone remotely
+
+Toggle Ninja is a plattform for your Android phone that exposes toggle like features such as GPS, WIFI or Hotspot to the Web or SMS. It features a REST API and a Web interface (built on node.js) and an Android application.
 
 ## Access
  - Web
