@@ -49,6 +49,7 @@ This project is currently under development 🔥 🚀
     "domain": ""
 }
 ```
+
 #### Response
 ```json
 {
@@ -58,19 +59,27 @@ This project is currently under development 🔥 🚀
 }
 ```
 
+### POST /api/triggers/notify
+#### Request
+```json
+{
+    "token": "auth_token",
+    "title": "",
+    "subtitle": "",
+    "url": "http:// ... url_to_open_on_notification_press",
+    "stack": true,
+    "icon": "http:// ...."
+}
+```
+#### Response
+```json
+{
+}
+```
+
 ### Generic toggle API
-- Supported `:command` values:
- - bluetooth
- - wifi
- - hotspot
-
-- Supported `argument` values:
- - on
- - off
- - toggle
-
 #### GET /api/triggers/:command/
-- Get status
+- Get status for command `:command`
 
 ##### Request
 ```json
@@ -78,6 +87,7 @@ This project is currently under development 🔥 🚀
     "token": "auth_token"
 }
 ```
+
 ##### Response
 ```json
 {
@@ -85,18 +95,17 @@ This project is currently under development 🔥 🚀
 }
 ```
 
-##### Response
-
 #### POST /api/triggers/:command/:argument
-- Toggle command
+- Trigger a command
 
-#### Request
+##### Request
 ```json
 {
     "token": "auth_token"
 }
 ```
-#### Response
+
+##### Response
 ```json
 {
     "status": "status",
@@ -114,18 +123,4 @@ This project is currently under development 🔥 🚀
 ```json
     "status": "",
     "executed_at": "date"
-```
-
-
-### POST /api/triggers/notify
-#### Request
-```json
-{
-    "token": "auth_token",
-    "title": "",
-    "subtitle": "",
-    "url": "",
-    "stack": true,
-    "icon": "http:// ...."
-}
 ```
