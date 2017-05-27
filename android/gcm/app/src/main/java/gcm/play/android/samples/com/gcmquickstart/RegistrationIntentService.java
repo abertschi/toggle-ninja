@@ -30,9 +30,6 @@ import com.turbomanage.httpclient.BasicHttpClient;
 import com.turbomanage.httpclient.HttpResponse;
 import com.turbomanage.httpclient.ParameterMap;
 
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -42,7 +39,7 @@ public class RegistrationIntentService extends IntentService {
     private static final String TAG = "RegIntentService";
     private static final String[] TOPICS = {"global"};
 
-    private static final String SERVER_URL = "http://213.136.81.179:3000/api/client";
+    private static final String SERVER_URL = "http://192.168.43.37:3000/api/users/regist";
     private static final String CLIENT_SECRET = "5A1xWB6W-uwJw42iiHDODfdfb4Ere01Tm3auJkXXDaLfbCsCfgnWaKiJErFExOOU8Jh0x33cpPe";
     private static final String KEY_CLIENT_ID = "client_id";
 
@@ -55,16 +52,10 @@ public class RegistrationIntentService extends IntentService {
         final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         try {
-            // [START register_for_gcm]
-            // Initially this call goes out to the network to retrieve the token, subsequent calls
-            // are local.
-            // R.string.gcm_defaultSenderId (the Sender ID) is typically derived from google-services.json.
-            // See https://developers.google.com/cloud-messaging/android/start for details on this file.
-            // [START get_token]
             InstanceID instanceID = InstanceID.getInstance(this);
             String token = instanceID.getToken(getString(R.string.gcm_defaultSenderId),
                     GoogleCloudMessaging.INSTANCE_ID_SCOPE, null);
-            // [END get_token]
+
             Log.i(TAG, "GCM Registration Token: " + token);
 
             // TODO: Implement this method to send any registration to your app's servers.

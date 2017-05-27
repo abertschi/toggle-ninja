@@ -74,7 +74,7 @@ let prepareRequest = () => {
 
 app.use('/', express.static('assets'));
 
-app.post('/api/client', clientTokenAuth, (req, res, next) => {
+app.post('/api/users/regist', clientTokenAuth, (req, res, next) => {
   let client;
 
   if (req.body.id) {

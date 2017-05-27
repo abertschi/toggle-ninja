@@ -32,7 +32,6 @@ public class HotspotCommand extends OnOffSwitchCommand {
 
             apControl.setWifiApEnabled(apControl.getWifiApConfiguration(), isOn);
         }
-
     }
 
     public static boolean isHotspotEnabled(Context context)

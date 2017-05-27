@@ -18,7 +18,6 @@ package gcm.play.android.samples.com.gcmquickstart;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -82,31 +81,8 @@ public class MyGcmListenerService extends GcmListenerService {
             }
         }
 
-
         Log.d(TAG, "Message: " + message);
-
-        if (from.startsWith("/topics/")) {
-            // message received from some topic.
-        } else {
-            // normal downstream message.
-        }
-
-        // [START_EXCLUDE]
-        /**
-         * Production applications would usually process the message here.
-         * Eg: - Syncing with server.
-         *     - Store message in local database.
-         *     - Update UI.
-         */
-
-        /**
-         * In some cases it may be useful to show a notification indicating to the user
-         * that a message was received.
-         */
-
-        // [END_EXCLUDE]
     }
-    // [END receive_message]
 
 
     /**

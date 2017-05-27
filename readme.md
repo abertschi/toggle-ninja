@@ -45,8 +45,8 @@ This project is currently under development 🔥 🚀
 #### Request
 ```json
 {
-    "clientSecret": ""
-
+    "clientSecret": "",
+    "domain": ""
 }
 ```
 #### Response
