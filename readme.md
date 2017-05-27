@@ -93,3 +93,16 @@ This project is currently under development 🔥 🚀
     "token": "auth_token"
 }
 ```
+
+### POST /api/triggers/notify
+#### Request
+```json
+{
+    "token": "auth_token",
+    "title": "",
+    "subtitle": "",
+    "url": "",
+    "stack": true,
+    "icon": "http:// ...."
+}
+```
