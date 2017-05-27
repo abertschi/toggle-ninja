@@ -46,6 +46,7 @@ This project is currently under development 🔥 🚀
 ```json
 {
     "clientSecret": ""
+
 }
 ```
 #### Response
@@ -59,14 +60,14 @@ This project is currently under development 🔥 🚀
 
 ### Generic toggle API
 - Supported `:command` values:
-  - bluetooth
-  - wifi
-  - hotspot
+ - bluetooth
+ - wifi
+ - hotspot
 
 - Supported `argument` values:
-  - on
-  - off
-  - toggle
+ - on
+ - off
+ - toggle
 
 #### GET /api/triggers/:command/
 - Get status
@@ -84,6 +85,8 @@ This project is currently under development 🔥 🚀
 }
 ```
 
+##### Response
+
 #### POST /api/triggers/:command/:argument
 - Toggle command
 
@@ -93,6 +96,26 @@ This project is currently under development 🔥 🚀
     "token": "auth_token"
 }
 ```
+#### Response
+```json
+{
+    "status": "status",
+    "statusToken": "statusToken"
+}
+```
+
+#### GET /api/triggers/:command/:statusToken
+##### Request
+```json
+    "token": "auth_token"
+```
+
+##### Response
+```json
+    "status": "",
+    "executed_at": "date"
+```
+
 
 ### POST /api/triggers/notify
 #### Request
