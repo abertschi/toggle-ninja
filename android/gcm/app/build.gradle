@@ -1,0 +1,54 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.0.0"
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'LICENSE.txt'
+    }
+
+    defaultConfig {
+        applicationId "ch.abertschi.remotetrigger"
+        minSdkVersion 9
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+
+
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:21.0.0'
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.google.android.gms:play-services-gcm:9.2.0'
+
+    compile 'com.android.support:appcompat-v7:22.2.0'
+
+    // https://mvnrepository.com/artifact/com.mashape.unirest/unirest-java
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.turbomanage.basic-http-client:http-client-android:0.89'
+
+    // Testing dependencies
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support:support-annotations:21.0.0'
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -31,3 +31,64 @@ This project is currently under development 🔥 🚀
 - take a picture
 - send a text
 - clean notifications
+
+
+## Rest API
+
+### General
+- Response code is always 200 on success
+- If response code is not 200, response contains a field called `error` with an error description
+
+### POST /api/users/regist
+- Register a user with the backend
+#### Request
+```json
+{
+    "clientSecret": ""
+}
+```
+#### Response
+```json
+{
+    "id": "uuid ....",
+    "token": "auth token for further requests ...",
+    "created": "date"
+}
+```
+
+### Generic toggle API
+- Supported `:command` values:
+ - bluetooth
+ - wifi
+ - hotspot
+
+- Supported `argument` values:
+ - on
+ - off
+ - toggle
+
+#### GET /api/triggers/:command/
+- Get status
+
+##### Request
+```json
+{
+    "token": "auth_token"
+}
+```
+##### Response
+```json
+{
+    "status": "..."
+}
+```
+
+#### POST /api/triggers/:command/:argument
+- Toggle command
+
+#### Request
+```json
+{
+    "token": "auth_token"
+}
+```
