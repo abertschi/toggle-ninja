@@ -59,14 +59,14 @@ This project is currently under development 🔥 🚀
 
 ### Generic toggle API
 - Supported `:command` values:
- - bluetooth
- - wifi
- - hotspot
+  - bluetooth
+  - wifi
+  - hotspot
 
 - Supported `argument` values:
- - on
- - off
- - toggle
+  - on
+  - off
+  - toggle
 
 #### GET /api/triggers/:command/
 - Get status
