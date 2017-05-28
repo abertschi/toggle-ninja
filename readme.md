@@ -48,15 +48,15 @@ This project is currently under development 🔥 🚀
 ```json
 {
     "clientSecret": "",
-    "domain": ""
+    "domain": "",
+    "clientToken": "Client token for google cloud services"
 }
 ```
 
 #### Response
 ```json
 {
-    "id": "uuid ....",
-    "token": "auth token for further requests ...",
+    "token": "auth token for further requests on this api ...",
     "created": "date"
 }
 ```
@@ -88,6 +88,7 @@ This project is currently under development 🔥 🚀
 - Get status for command `:command`
 
 ##### Request
+The following attributes are set as query strings:
 ```json
 {
     "token": "auth_token"
@@ -101,15 +102,16 @@ This project is currently under development 🔥 🚀
 }
 ```
 
-#### POST /api/triggers/:command/:argument
+#### POST /api/triggers/:command/:argument?parms=...
 - Trigger a command
 
 ##### Request
 ```json
 {
     "token": "auth_token",
-    "quiet": false,
+    "intentFilter": "expose trigger request to 3rd party commands",
     "payload": {
+        "quiet": false
     }
 }
 ```
@@ -121,7 +123,8 @@ This project is currently under development 🔥 🚀
 }
 ```
 
-#### GET /api/triggers/:command/:statusToken
+#### GET /api/triggers/status/:statusToken
+The following attributes are set as query strings:
 ##### Request
 ```json
 {
@@ -136,6 +139,46 @@ This project is currently under development 🔥 🚀
     "payload": {
     },
     "sent_at": "date",
+    "received_at": "date",
     "executed_at": "date"
 }
 ```
+
+#### POST /api/triggers/status/:statusToken
+- Update the status
+##### Request
+```json
+{
+    "token": "auth_token",
+    "status": "error|pending|done",
+    "executed_at": "date",
+    "payload": {
+    }
+}
+```
+
+##### Response
+```json
+{
+    "status": "error|pending|done",
+    "payload": {
+    },
+    "sent_at": "date",
+    "executed_at": "date"
+}
+```
+
+
+### Service Provider Interface
+Create your own plugin and call it via toggle-ninja's API.
+Export your service and create an intent-filter which you pass in the body of the API calls.
+Toggle Ninja will forward the request to your plugin.
+
+```json
+{
+    "intentFilter": "expose trigger request to 3rd party commands",    
+}
+```
+
+### Design choices
+- Use token in query string or body? https://community.apigee.com/questions/28794/best-practices-for-passing-an-access-token-without.html
