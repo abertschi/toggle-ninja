@@ -65,11 +65,13 @@ This project is currently under development 🔥 🚀
 ```json
 {
     "token": "auth_token",
-    "title": "",
-    "subtitle": "",
-    "url": "http:// ... url_to_open_on_notification_press",
-    "stack": true,
-    "icon": "http:// ...."
+    "payload": {
+        "title": "",
+        "subtitle": "",
+        "url": "http:// ... url_to_open_on_notification_press",
+        "stack": true,
+        "icon": "http:// ...."
+    }
 }
 ```
 
