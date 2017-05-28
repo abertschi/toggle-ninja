@@ -42,6 +42,7 @@ This project is currently under development 🔥 🚀
 
 ### POST /api/users/regist
 - Register a user with the backend
+
 #### Request
 ```json
 {
@@ -71,9 +72,11 @@ This project is currently under development 🔥 🚀
     "icon": "http:// ...."
 }
 ```
+
 #### Response
 ```json
 {
+    "statusToken": ""
 }
 ```
 
@@ -91,7 +94,7 @@ This project is currently under development 🔥 🚀
 ##### Response
 ```json
 {
-    "status": "..."
+    "statusToken": ""
 }
 ```
 
@@ -101,6 +104,23 @@ This project is currently under development 🔥 🚀
 ##### Request
 ```json
 {
+    "token": "auth_token",
+    "payload": {
+    }
+}
+```
+
+##### Response
+```json
+{
+    "statusToken": ""
+}
+```
+
+#### GET /api/triggers/:command/:statusToken
+##### Request
+```json
+{
     "token": "auth_token"
 }
 ```
@@ -108,19 +128,10 @@ This project is currently under development 🔥 🚀
 ##### Response
 ```json
 {
-    "status": "status",
-    "statusToken": "statusToken"
-}
-```
-
-#### GET /api/triggers/:command/:statusToken
-##### Request
-```json
-    "token": "auth_token"
-```
-
-##### Response
-```json
-    "status": "",
+    "status": "error|pending|done",
+    "payload": {
+    },
+    "sent_at": "date",
     "executed_at": "date"
+}
 ```
