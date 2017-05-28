@@ -160,11 +160,6 @@ The following attributes are set as query strings:
 ##### Response
 ```json
 {
-    "status": "error|pending|done",
-    "payload": {
-    },
-    "sent_at": "date",
-    "executed_at": "date"
 }
 ```
 
