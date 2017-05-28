@@ -16,6 +16,7 @@ This project is currently under development 🔥 🚀
 
 ## Features
 
+- ping
 - GPS (requires root)
 - change volume
 - flight mode
@@ -107,6 +108,7 @@ This project is currently under development 🔥 🚀
 ```json
 {
     "token": "auth_token",
+    "quiet": false,
     "payload": {
     }
 }

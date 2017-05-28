@@ -288,7 +288,7 @@
 
       function callPhone(command, arg) {
         $.ajax({
-          url: "http://213.136.81.179:3000/api/trigger/" + command + '/' + arg,
+          url: "http://localhost:3000/api/trigger/" + command + '/' + arg,
           data: {
             token: localStorage.getItem('password')
           },
