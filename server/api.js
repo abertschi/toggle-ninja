@@ -37,9 +37,10 @@ function verifyToken(req, res, next) {
     let userRequest = Users.findUser(req.body.token);
 
     userRequest.onValue((user) => {
+        console.log(user);
         if (user) next();
         else res.status(401).send({
-            error: 'Unauthorized'
+            error: 'Unauthorized. No valid token'
         });
     });
 }
@@ -77,7 +78,7 @@ function register(req, res, next) {
                 return user;
             }
         })
-        .flatMap((user) => createOrUpdateClient(user.id, user))
+        .flatMap((user) => Users.createOrUpdateClient(user.id, user))
 
     response.onValue((user) => res.send(user));
     response.onError((err) => res.send(500, err));

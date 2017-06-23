@@ -39,7 +39,7 @@ public class RegistrationIntentService extends IntentService {
     private static final String TAG = "RegIntentService";
     private static final String[] TOPICS = {"global"};
 
-    private static final String SERVER_URL = "http://192.168.43.37:3000/api/users/regist";
+    private static final String SERVER_URL = "http://213.136.81.179:3000/api/users/regist";
     private static final String CLIENT_SECRET = "5A1xWB6W-uwJw42iiHDODfdfb4Ere01Tm3auJkXXDaLfbCsCfgnWaKiJErFExOOU8Jh0x33cpPe";
     private static final String KEY_CLIENT_ID = "client_id";
 
